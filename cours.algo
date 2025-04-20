@@ -1,0 +1,40 @@
+ALGORITHME SommeElementsDistincts
+VAR
+    set1, set2 : TABLEAU D'ENTIERS
+    somme : ENTIER := 0
+    estPresent : BOOLEEN
+    i, j : ENTIER
+DEBUT
+    set1 ← [3, 1, 7, 9]
+    set2 ← [2, 4, 1, 9, 3]
+
+    // Vérifier les éléments uniques dans set1
+    POUR i DE 0 A LONGUEUR(set1)-1 FAIRE
+        estPresent ← FAUX
+        POUR j DE 0 A LONGUEUR(set2)-1 FAIRE
+            SI set1[i] = set2[j] ALORS
+                estPresent ← VRAI
+                SORTIR
+            FIN SI
+        FIN POUR
+        SI NON estPresent ALORS
+            somme ← somme + set1[i]
+        FIN SI
+    FIN POUR
+
+    // Vérifier les éléments uniques dans set2
+    POUR i DE 0 A LONGUEUR(set2)-1 FAIRE
+        estPresent ← FAUX
+        POUR j DE 0 A LONGUEUR(set1)-1 FAIRE
+            SI set2[i] = set1[j] ALORS
+                estPresent ← VRAI
+                SORTIR
+            FIN SI
+        FIN POUR
+        SI NON estPresent ALORS
+            somme ← somme + set2[i]
+        FIN SI
+    FIN POUR
+
+    AFFICHER "La somme des éléments distincts est : ", somme
+FIN
