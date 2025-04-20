@@ -1,0 +1,44 @@
+program ProduitScalaireOrthogonaliteFonction;
+
+var
+  v1, v2: array of real;
+  n, i, k: integer;
+
+function dot_product(v1, v2: array of real): real;
+var
+  i: integer;
+  ps: real;
+begin
+  ps := 0;
+  for i := 0 to Length(v1) - 1 do
+    ps := ps + v1[i] * v2[i];
+  dot_product := ps;
+end;
+
+begin
+  // Nombre de paires de vecteurs
+  writeln('Entrez le nombre de paires de vecteurs : ');
+  readln(n);
+
+  for k := 1 to n do
+  begin
+    // Initialisation des vecteurs (taille 2 pour simplifier)
+    SetLength(v1, 2);
+    SetLength(v2, 2);
+
+    // Saisie des vecteurs
+    writeln('Paire ', k, ' :');
+    writeln('Entrez les composantes du vecteur v1 (2 valeurs) : ');
+    for i := 0 to 1 do
+      readln(v1[i]);
+    writeln('Entrez les composantes du vecteur v2 (2 valeurs) : ');
+    for i := 0 to 1 do
+      readln(v2[i]);
+
+    // Vérification de l'orthogonalité
+    if dot_product(v1, v2) = 0 then
+      writeln('Les vecteurs sont orthogonaux.')
+    else
+      writeln('Les vecteurs ne sont pas orthogonaux.');
+  end;
+end.
